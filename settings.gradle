@@ -1,0 +1,9 @@
+rootProject.name = "opentelemetry-javaagent-extension"
+
+include("health-check")
+
+include 'examples:spring-web'
+findProject(':examples:spring-web')?.name = 'spring-web'
+
+include 'examples:spring-webflux'
+findProject(':examples:spring-webflux')?.name = 'spring-webflux'

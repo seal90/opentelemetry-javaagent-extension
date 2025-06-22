@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+}
+
+group = "io.github.seal90"
+version = "1.0"
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    versions = [
+            springbootVersion           : "2.2.5.RELEASE"
+    ]
+}
+
+dependencies {
+
+    implementation(platform("org.springframework.boot:spring-boot-starter-parent:${versions.springbootVersion}"))
+
+    implementation("org.springframework.boot:spring-boot-starter-web")
+}
