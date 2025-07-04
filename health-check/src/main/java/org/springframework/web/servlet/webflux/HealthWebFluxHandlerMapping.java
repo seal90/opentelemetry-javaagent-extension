@@ -24,6 +24,7 @@ public class HealthWebFluxHandlerMapping implements HandlerMapping, Ordered {
     String requestURI = request.getURI().getPath();
     if("/ping".equals(requestURI)) {
       try {
+        exchange.getAttributes().put(HandlerMapping.BEST_MATCHING_PATTERN_ATTRIBUTE, "/ping");
         HandlerMethod handlerMethod = new HandlerMethod(healthWebFluxController, "ping");
         return Mono.just(handlerMethod);
       } catch (NoSuchMethodException e) {
@@ -33,7 +34,4 @@ public class HealthWebFluxHandlerMapping implements HandlerMapping, Ordered {
     return Mono.empty();
   }
 
-  public HealthWebFluxController getHealthWebFluxController() {
-    return healthWebFluxController;
-  }
 }

@@ -24,3 +24,24 @@ JAVA_TOOL_OPTIONS="-javaagent:AGENT_PATH/opentelemetry-javaagent-2.16.0.jar";OTE
     return extendsClass(named("org.springframework.context.support.AbstractApplicationContext"));
   }
 ````
+
+# Good class
+
+spring web:
+    
+    Container invoke Filter, spring web invoke DispatcherServlet, 
+    in DispatcherServlet, DispatcherHandler#doDispatch find HandlerMethod -> 
+    invoke HandlerInterceptor pre -> invoke HandlerMethod -> 
+    invoke HandlerInterceptor post -> invoke HandlerInterceptor afterCompletion
+
+spring webflux:
+
+    HttpWebHandlerAdapter adapter netty
+    ExceptionHandlingWebHandler(delegate=FilteringWebHandler(delegate=DispatcherHandler))
+    
+| Role                   | Web                | WebFlux           |
+|------------------------|--------------------|-------------------|
+| Container Config Class | WebMvcConfigurer   | WebFluxConfigurer |
+| Filter                 | Filter             | WebFilter         |
+| Interceptor            | HandlerInterceptor | WebFilter         |
+

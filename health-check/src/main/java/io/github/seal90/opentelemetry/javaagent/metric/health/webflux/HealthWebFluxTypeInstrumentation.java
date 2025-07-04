@@ -1,6 +1,5 @@
 package io.github.seal90.opentelemetry.javaagent.metric.health.webflux;
 
-import io.opentelemetry.javaagent.bootstrap.InstrumentationProxyHelper;
 import io.opentelemetry.javaagent.extension.instrumentation.TypeInstrumentation;
 import io.opentelemetry.javaagent.extension.instrumentation.TypeTransformer;
 import net.bytebuddy.asm.Advice;
@@ -9,7 +8,6 @@ import net.bytebuddy.matcher.ElementMatcher;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.GenericBeanDefinition;
-import org.springframework.web.servlet.webflux.HealthWebFluxController;
 import org.springframework.web.servlet.webflux.HealthWebFluxHandlerMapping;
 
 import static io.opentelemetry.javaagent.extension.matcher.AgentElementMatchers.extendsClass;
@@ -79,15 +77,6 @@ public class HealthWebFluxTypeInstrumentation implements TypeInstrumentation {
           // Ignore
         }
       }
-
-//      if (beanFactory instanceof BeanDefinitionRegistry
-//          && beanFactory.containsBean("healthWebFluxHandlerMapping")) {
-//        Object bean = beanFactory.getBean("healthWebFluxHandlerMapping");
-//        HealthWebFluxHandlerMapping mapping =
-//            InstrumentationProxyHelper.unwrapIfNeeded(bean, HealthWebFluxHandlerMapping.class);
-//        HealthWebFluxController controller = mapping.getHealthWebFluxController();
-//        controller.ping();
-//      }
     }
   }
 }

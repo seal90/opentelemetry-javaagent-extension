@@ -80,14 +80,6 @@ public class HealthWebTypeInstrumentation implements TypeInstrumentation {
           // Ignore
         }
       }
-//      if (beanFactory instanceof BeanDefinitionRegistry
-//          && beanFactory.containsBean("healthHandlerMapping")) {
-//        Object bean = beanFactory.getBean("healthHandlerMapping");
-//        HealthHandlerMapping filter =
-//            InstrumentationProxyHelper.unwrapIfNeeded(bean, HealthHandlerMapping.class);
-//        HealthController healthController = filter.getHealthController();
-//        healthController.ping();
-//      }
     }
   }
 }
